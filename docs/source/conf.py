@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath("../.."))
 project: str = "Syndeo"
 copyright: str = "2024 Massachusetts Institute of Technology"
 author: str = "William Li"
-release: str = "0.3"
+release: str = "0.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
