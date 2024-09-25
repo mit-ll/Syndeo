@@ -1,0 +1,95 @@
+[tool.pytest.ini_options]
+    log_cli = true
+    log_cli_level = "INFO"
+    log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+    log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.black]
+    line-length = 100
+    target-version = ['py310']
+    include = '\.pyi?$'
+    exclude = '''
+    /(
+        \.eggs
+    | \.git
+    | \.hg
+    | \.idea
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.tox
+    | \.venv
+    | \.vscode
+    | \.nox
+    | \docs
+    | _build
+    | buck-out
+    | build
+    | dist
+    # The following are specific to Black, you probably don't want those.
+    | blib2to3
+    | tests/data
+    | profiling
+    )/
+    '''
+
+[tool.poetry]
+    name = "syndeo"
+    version = "0.1.0"
+    description = "A template for setting up ray multi-node processing on SLURM."
+    authors = ["William Li"]
+    readme = "README.md"
+    packages = [{include = "src"}]
+
+[tool.poetry.scripts]
+    syndeo = "main:app"
+
+[tool.poetry.dependencies]
+    poetry = "^1.4.2"
+    python = "^3.10"
+    ray = "^2.23.0"
+    trogon = "^0.5.0"
+    typer = {version ="^0.9.0", extras = ["all"]}
+
+[tool.poetry.group.dev]
+    optional = true
+
+[tool.poetry.group.cicd.dependencies]
+    black = "*"
+    mypy = "*"
+    nox = "*"
+    pre-commit = "*"
+
+[tool.poetry.group.dev.dependencies]
+    dm-tree = "^0.1.8"
+    gputil = "^1.4.0"
+    gymnasium = {version = "0.29.0", extras = ["classic-control"]}
+    lz4 = "^4.3.2"
+    nox = "^2023.4.22"
+    numpy = "1.26.4"
+    pandas = "^2.0.3"
+    pre-commit = "*"
+    pydantic = "^1.10.9"
+    pytest = "*"
+    ray = {version = "2.23.0", extras = ["default", "tune"]}
+    scikit-image = "^0.21.0"
+    tabulate = "^0.9.0"
+    tensorboard = "^2.13.0"
+    torch = "2.2.0"
+
+[tool.poetry.group.doc.dependencies]
+    myst-parser = "*"
+    pydata-sphinx-theme = "*"
+    sphinx-book-theme = "*"
+    sphinx-design = "*"
+
+[tool.poetry.group.test.dependencies]
+    allure-pytest = "*"
+    pytest = "*"
+    pytest-clarity = "^1.0.1"
+    pytest-cov = "*"
+    pytest-html = "*"
+    pytest-memray = "*"
+
+[build-system]
+    requires = ["poetry-core"]
+    build-backend = "poetry.core.masonry.api"

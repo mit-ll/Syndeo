@@ -1,0 +1,40 @@
+##########################################################################################
+#   DESCRIPTION:  Run pre-commit on all files in repo.
+#        AUTHOR:  W. Li
+#       VERSION:  1.0
+#       CREATED:  1/6/2024
+#
+# References:
+# * https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-pythonCommon
+#
+##########################################################################################
+
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+##########################################################################################
+# Jobs
+##########################################################################################
+jobs:
+  ########################################################################################
+  # Pre-commit checks.
+  ########################################################################################
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout repo
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    # Setup Python
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        token: ${{ secrets.GH_GITHUB_COM_TOKEN }}
+        python-version: "3.10"
+    # Run pre-commit
+    - name: Run pre-commit
+      uses: pre-commit/action@v3.0.0

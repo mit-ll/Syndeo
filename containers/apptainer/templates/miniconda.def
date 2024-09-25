@@ -1,0 +1,127 @@
+bootstrap: docker
+From: ubuntu:22.04
+Stage: build
+
+%help
+    Build production container:
+    $ sudo singularity build <name>.sif <name>.def
+
+    Add a 1 GiB writable overlay partition to an existing SIF image:
+    $ singularity overlay create --size 1024 <name>.sif
+
+    Shell into singularity container:
+    $ singularity shell --contain --writable <name>.sif
+
+        --contain
+            Do not automatically bind volumes to container.
+        --writable
+            This option makes the file system accessible as read/write.
+
+    Binding to a volume:
+    $ singularity shell --bind host_mnt:container_mnt <name>.sif
+
+%setup
+
+%files
+
+%environment
+    #=======================================================================
+    # Common Settings
+    #=======================================================================
+    # Ref 1: https://unix.stackexchange.com/questions/87745/what-does-lc-all-c-do
+    # Ref 2: https://unix.stackexchange.com/questions/168340/where-is-ld-library-path-how-do-i-set-the-ld-library-path-env-variable
+    export HOME="/domi"
+    export LC_ALL=C
+    export PATH=/root/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH
+    export SINGULARITY_SHELL=/bin/bash
+
+    #=======================================================================
+    # Frontend
+    #=======================================================================
+    # Perform installation without requiring interactive user input.
+    # Ref 1: https://askubuntu.com/questions/972516/debian-frontend-environment-variable
+    export DEBIAN_FRONTEND=noninterative
+
+    #=======================================================================
+    # Python
+    #=======================================================================
+    # Use local Python instead of global Python packages.
+    # Ref 1: https://stackoverflow.com/questions/35835274/how-to-reuse-global-site-packages-in-conda-env
+    export PYTHONNOUSERSITE=True
+    export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+    export PATH=$PATH:/opt/miniconda3/bin
+
+%post
+    #=======================================================================
+    # Environment
+    #=======================================================================
+    export HOME="/domi"
+
+    #=======================================================================
+    # Packages/Applications
+    #=======================================================================
+    apt-get update
+    apt-get install -y bashtop curl gcc git g++ make htop netcat neofetch nvtop s-tui tree vim wget zsh
+    apt-get clean
+
+    #=======================================================================
+    # Setup directories
+    #=======================================================================
+    # needed for writable containers
+    mkdir -p /dev
+
+    #=======================================================================
+    # Shell Preferences
+    #=======================================================================
+    export OSH="${HOME}/.oh-my-bash"; bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+
+    #=======================================================================
+    # Vim Preferences
+    #=======================================================================
+    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+    sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+    #=======================================================================
+    # Miniconda Install
+    #=======================================================================
+    readonly CONDA_INSTALLER="miniconda3.sh"
+    readonly CONDA_VERSION="Miniconda3-py310_23.11.0-1-Linux-x86_64.sh"
+    readonly CONDA_PREFIX="/opt/miniconda3"
+
+    wget https://repo.anaconda.com/miniconda/${CONDA_VERSION} -O ${CONDA_INSTALLER}
+    bash ${CONDA_INSTALLER} -b -p ${CONDA_PREFIX}
+    rm ${CONDA_INSTALLER}
+
+    # Set Pathing
+    export CONDA_PYTHON_EXE=${CONDA_PREFIX}/bin/python
+    export PATH=$PATH:${CONDA_PREFIX}/bin
+
+    #=======================================================================
+    # File Permissions
+    #=======================================================================
+    # Make all files accessible
+    chmod --recursive 777 /opt
+    chmod --recursive 777 $HOME
+
+    #=======================================================================
+    # Configure Shell
+    #=======================================================================
+    echo 'cd $HOME' >> ~/.bashrc
+    echo 'export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring' >> ~/.bashrc
+    echo '. /opt/miniconda3/etc/profile.d/conda.sh' >> ~/.bashrc
+    echo 'conda activate base' >> ~/.bashrc
+    echo 'neofetch' >> ~/.bashrc
+
+%runscript
+    # When using runscript, the environment variables are not inherited, this means
+    # that you must manually set them here if you need them.
+    echo "Arguments received: $*"
+    exec echo "$@"
+
+%startscript
+
+%test
+
+%labels
+    Version: v1.0.0

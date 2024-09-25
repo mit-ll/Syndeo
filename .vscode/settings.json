@@ -1,0 +1,120 @@
+{
+    "___________________________Info___________________________": "",
+    "comments.Description": "VsCode Python",
+    "comments.Date": "Dec-02-2023",
+    "___________________________Formatter___________________________": "",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
+    },
+    // The number of spaces a tab is equal to. This setting is overridden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.tabSize": 4,
+    // Insert spaces when pressing Tab. This setting is overridden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.insertSpaces": true,
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+    // will be detected based on the file contents. Set to false to keep
+    // the values you've explicitly set, above.
+    "editor.detectIndentation": false,
+    "___________________________DocString___________________________": "",
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.generateDocstringOnEnter": true,
+    "autoDocstring.guessTypes": true,
+    "autoDocstring.includeExtendedSummary": false,
+    "___________________________Fonts___________________________": "",
+    "debug.console.fontSize": 11.5,
+    "terminal.integrated.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'MesloLGS NF'",
+    "editor.fontSize": 11.5,
+    "editor.formatOnSave": true,
+    "terminal.integrated.fontSize": 11.5,
+    "markdown.preview.fontSize": 14.5,
+    "___________________________Workspace___________________________": "",
+    "workbench.editor.showTabs": "single",
+    "___________________________Rulers___________________________": "",
+    "editor.rulers": [
+        100
+    ],
+    "editor.wordWrap": "wordWrapColumn",
+    "[log]": {
+        "editor.wordWrap": "off",
+    },
+    "editor.wordWrapColumn": 100,
+    "___________________________Configs___________________________": "",
+    "python.envFile": "${workspaceFolder}/.vscode/.env",
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    "___________________________Plugins___________________________": "",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.languageServer": "Pylance",
+    "___________________________Linting___________________________": "",
+    "___________________________Testing___________________________": "",
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "___________________________Themes___________________________": "",
+    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorCustomizations": {},
+    "editor.tokenColorCustomizations": {
+        // "functions": {
+        //     "fontStyle": "italic bold",
+        // },
+        "textMateRules": [
+            { // class def
+                "scope": "storage.type.class.python",
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            { // class name
+                "scope": "entity.name.type.class.python",
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            { // class self ref
+                "scope": "variable.parameter.function.language.special.self.python",
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            },
+            { // function def
+                "scope": "storage.type.function.python",
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            { // function name
+                "scope": "entity.name.function.python",
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            { // class init
+                "scope": "support.function.magic.python",
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            { // decorator
+                "scope": "entity.name.function.decorator.python",
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            },
+            { // comments
+                "scope": "comment.line.number-sign.python",
+                "settings": {
+                    // "foreground": "#0000008d",
+                }
+            },
+        ]
+    },
+    "___________________________Misc___________________________": "",
+    "files.exclude": {
+        "**/.DS_Store": true,
+    },
+}

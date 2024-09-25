@@ -1,0 +1,27 @@
+# Types to ignore
+.DS_Store
+*.pyc
+*.out
+*.sif
+*.pptx
+
+# Files to ignore
+logs
+save
+tmp
+
+# Folders to ignore
+.mypy_cache
+.nox/build
+.nox/pytest
+.nox/show_sphinx
+.pytest_cache
+.ray_slurm
+docs/html
+docs/build
+docs/source/_static/pytest-allure-build
+docs/source/_static/pytest-allure-html
+docs/source/_static/pytest-coverage
+docs/source/_static/pytest-profile
+docs/source/_static/pytest-summary
+docs/source/pages/api

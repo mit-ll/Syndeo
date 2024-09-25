@@ -1,0 +1,22 @@
+Bootstrap: localimage
+From: miniconda.sif
+
+%post
+    #=======================================================================
+    # Miniconda Env
+    #=======================================================================
+    # The following variables must be set in order for the def file to use Anaconda
+    export CONDA_PREFIX="/opt/miniconda3"
+    export PATH=$PATH:${CONDA_PREFIX}/bin
+
+    #=======================================================================
+    # Using Custom Conda Environments
+    #=======================================================================
+    cd $HOME
+    # TODO: Add installation packages here
+
+    #=======================================================================
+    # Set Permissions
+    #=======================================================================
+    chmod --recursive 777 /opt
+    chmod --recursive 777 $HOME

@@ -1,0 +1,6 @@
+Nox
+PyTests
+Syndeo
+on-premesis
+SLURM
+off-premesis
