@@ -11,7 +11,7 @@ Overview
 .. raw:: html
 
     <div align="center">
-        <iframe width="600" height="400" src="http://www.youtube.com/embed/J0NuOlA2xDc" frameborder="0" allowfullscreen></iframe>
+        <iframe width="600" height="400" src="https://www.youtube.com/embed/J0NuOlA2xDc" title="Never install locally" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
 Syndeo leverages containers to host Ray and all of your applications together.  These containers can then be deployed to SLURM or a cloud provider of your choosing.
