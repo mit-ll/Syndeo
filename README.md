@@ -13,12 +13,18 @@
     </p>
 </figure>
 
+<div align="center">
+
+  <a href="https://arxiv.org/abs/2409.17070">  ![LinkedIn](https://img.shields.io/badge/Paper-black?style=for-the-badge&logo=README&logoColor=white) </a>
+  <a href="https://mit-ll.github.io/Syndeo/">  ![LinkedIn](https://img.shields.io/badge/Documentation-black?style=for-the-badge&logo=sphinx&logoColor=white) </a>
+
+</div>
+
 <p align="center">
   <a href="https://devguide.python.org/versions/">                  <img alt="" src="https://img.shields.io/badge/python-3.10|3.11-blue?logo=python&logoColor=white"></a>
   <a href="https://github.com/pre-commit/pre-commit">               <img alt="" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit"></a>
   <a href="https://docs.pytest.org/en/7.1.x/getting-started.html">  <img alt="" src="https://img.shields.io/badge/pytest-enabled-brightgreen?logo=pytest&logoColor=white"></a>
   <a href="https://black.readthedocs.io/en/stable/index.html">      <img alt="" src="https://badgen.net/static/code%20style/black/black"></a>
-
 </p>
 
 <p align="center">
