@@ -15,8 +15,8 @@
 
 <div align="center">
 
-  <a href="https://arxiv.org/abs/2409.17070">  ![LinkedIn](https://img.shields.io/badge/Paper-black?style=for-the-badge&logo=README&logoColor=white) </a>
-  <a href="https://mit-ll.github.io/Syndeo/">  ![LinkedIn](https://img.shields.io/badge/Documentation-black?style=for-the-badge&logo=sphinx&logoColor=white) </a>
+  <a href="https://arxiv.org/abs/2409.17070">   <img src="https://img.shields.io/badge/Paper-black?style=for-the-badge&logo=README&logoColor=white"></a>
+  <a href="https://mit-ll.github.io/Syndeo/">   <img src="https://img.shields.io/badge/Documentation-black?style=for-the-badge&logo=sphinx&logoColor=white"></a>
 
 </div>
 
